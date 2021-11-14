@@ -13,30 +13,12 @@ const Wrapper = styled.div`
     padding: 0 0.4rem;
     align-items: center;
   }
-  .header span {
-    position: absolute;
-    border-radius: 50%;
-    font-size: 2rem;
-    border: 0.5px solid;
-    height: 2rem;
-    width: 2rem;
-    right: 1rem;
-    top: 0.5rem;
-    text-align: center;
-  }
+
   .header h1 {
     margin: 1rem 0;
   }
   .burger-btn {
     margin-right: 1rem;
-  }
-  .header div {
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-  }
-  .header span:hover {
-    background-color: lightgray;
   }
 
   .burger-btn div {
@@ -67,6 +49,26 @@ const Wrapper = styled.div`
     background-color: lightblue;
     border-left: 6px solid blue;
   }
+  .close-btn {
+    position: relative;
+
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .close-btn div {
+    position: absolute;
+    transform: rotate(45deg);
+    width: 1.5em;
+    height: 5px;
+    background-color: black;
+    margin: 0.2rem;
+  }
+  .close-btn div:nth-of-type(2) {
+    transform: rotate(135deg);
+  }
   @media (min-width: 991px) {
     .menu-items {
       width: 20rem;
@@ -90,8 +92,9 @@ export default function Sidebar({ children }) {
           <div className={`menu-items ${showSidebar ? "show" : ""}`}>
             <div className="header">
               <h1>Shop</h1>
-              <div>
-                <span onClick={() => setShowSidebar(false)}>&times;</span>
+              <div className="close-btn" onClick={() => setShowSidebar(false)}>
+                <div></div>
+                <div></div>
               </div>
             </div>
             {children}
