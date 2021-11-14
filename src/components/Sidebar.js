@@ -22,7 +22,6 @@ const Wrapper = styled.div`
     width: 2rem;
     right: 1rem;
     top: 0.5rem;
-    line-height: 1.5rem;
     text-align: center;
   }
   .header h1 {
