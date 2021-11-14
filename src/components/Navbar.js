@@ -2,20 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { LINKS } from "../COSTANTS";
+import Sidebar from "./Sidebar";
 
 const Wrapper = styled.section`
   display: flex;
   flex: 1;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   align-items: center;
-  h1 {
-    margin: 0;
-    padding: 0.5rem;
-  }
+  position: relative;
   .logo {
     padding: 0 1rem;
     display: flex;
     align-items: center;
+  }
+  .logo h1 {
+    margin: 0;
+    padding: 0.5rem;
   }
   .links {
     display: flex;
@@ -57,6 +59,8 @@ const Wrapper = styled.section`
   }
 `;
 export default function Navbar() {
+  const isDesktop = window.matchMedia("(min-width: 991px)").matches;
+
   return (
     <Wrapper>
       <div className="logo">
@@ -65,17 +69,26 @@ export default function Navbar() {
         </h1>
       </div>
       <div className="header-content" style={{ flex: 1, display: "flex" }}>
-        <div className="links">
-          {LINKS.map((link) => {
-            return <Link to={link.href}>{link.name}</Link>;
-          })}
-        </div>
+        {isDesktop && (
+          <div className="links">
+            {LINKS.map((link) => {
+              return <Link to={link.href}>{link.name}</Link>;
+            })}
+          </div>
+        )}
         <div className="buttons">
           <div className="btn">&#9825;</div>
           <div className="btn">&#9825;</div>
           <div className="btn">&#9825;</div>
         </div>
       </div>
+      {!isDesktop && (
+        <Sidebar>
+          {LINKS.map((link) => {
+            return <Link to={link.href}>{link.name}</Link>;
+          })}
+        </Sidebar>
+      )}
     </Wrapper>
   );
 }
