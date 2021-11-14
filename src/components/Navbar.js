@@ -6,11 +6,11 @@ import Sidebar from "./Sidebar";
 
 const Wrapper = styled.section`
   display: flex;
-  flex: 1;
   border-bottom: 1px solid black;
   align-items: center;
   position: relative;
   .logo {
+    flex: 1;
     padding: 0 1rem;
     display: flex;
     align-items: center;
@@ -32,8 +32,9 @@ const Wrapper = styled.section`
   }
   .buttons {
     display: flex;
-    justify-content: center;
+    justify-self: flex-end;
     padding: 0 1rem;
+    width: auto;
   }
   .buttons .btn {
     color: red;
@@ -54,8 +55,14 @@ const Wrapper = styled.section`
     cursor: pointer;
   }
   .header-content {
+      justify-content: flex-end;
     background-color: white;
     flex-direction: row;
+  }
+  @media (min-width: 991px) {
+    .logo {
+      flex: 0;
+    }
   }
 `;
 export default function Navbar() {
